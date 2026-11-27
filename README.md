@@ -2,7 +2,7 @@
 
 A mixed-integer linear programme that plans 10 endoscopy rooms over 26 weeks for a teaching hospital's GI unit, meeting every week of patient demand at the lowest possible cost.
 
-![Room activation plan](images/room_activation_gantt.png)
+![Room activation plan](room_activation_gantt.png)
 
 ## Results at a glance
 
@@ -28,14 +28,14 @@ Each week, the unit decides which rooms to open, whether each runs in diagnostic
 
 ## Key findings
 
-![Room contribution](images/room_contribution.png)
+![Room contribution](room_contribution.png)
 
 - Four rooms (4, 6, 7 and one small room) deliver about 70% of all procedure hours. Room 7 runs in therapeutic mode all 26 weeks, which makes it the most critical asset.
 - Rooms 8 and 9 add no value over the planning horizon, so the hospital can reallocate them to other specialities.
 - Clinician hours, not rooms, are the binding constraint in Weeks 7 to 10, so locum cover should be arranged before Week 6.
 - Toggling rooms on and off costs more than £20,000 per cycle, so the optimal plan keeps rooms open in long continuous blocks.
 
-![Demand pressure index](images/demand_pressure_index.png)
+![Demand pressure index](demand_pressure_index.png)
 
 ## Tools
 
@@ -44,9 +44,9 @@ R · ompr · ROI · HiGHS · dplyr · tidyr · ggplot2 · patchwork
 ## Repository structure
 
 ```
-├── R/endoscopy_milp.R    # model, solve, validation, 12 plots and an executive dashboard
-├── report/               # full written report (PDF)
-└── images/               # figures used in this README
+├── endoscopy_milp.R                              # model, solve, validation, 12 plots and an executive dashboard
+├── Hospital_Endoscopy_Capacity_Optimisation.pdf  # full written report
+└── *.png                                         # figures used in this README
 ```
 
 ## How to run
@@ -56,14 +56,14 @@ All input data is defined inside the script, so no external files are needed.
 ```r
 install.packages(c("ompr", "ompr.roi", "ROI", "ROI.plugin.highs",
                    "dplyr", "tidyr", "ggplot2", "patchwork", "scales"))
-source("R/endoscopy_milp.R")
+source("endoscopy_milp.R")
 ```
 
 Plots, tables and the solver log are saved to `outputs/`.
 
 ## Report
 
-The full report, including the model formulation and a review of a branch-price-and-cut scheduling paper, is in [`report/`](report/Hospital_Endoscopy_Capacity_Optimisation.pdf).
+The full report, including the model formulation and a review of a branch-price-and-cut scheduling paper, is in [Hospital_Endoscopy_Capacity_Optimisation.pdf](Hospital_Endoscopy_Capacity_Optimisation.pdf).
 
 ---
 
